@@ -5,9 +5,6 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
-import cloneDeep from 'lodash/cloneDeep'
-import isNil from 'lodash/isNil'
-
 
 let id = 1;
 function createNewRowData() {
@@ -81,7 +78,7 @@ class GridPage extends Component {
             });
             printResult(res);
         } else {
-            alert('아이템이 선택되지 않았습니다.');
+            alert('row가 선택되지 않았습니다.');
         }
     }
 
@@ -110,7 +107,7 @@ class GridPage extends Component {
                     remove: selectedRow
                 });
             } else {
-                alert('rowIndex가 리스트의 마지막 index를 넘을 수 없습니다.');
+                alert('rowIndex가 리스트의 마지막 입니다.');
             }
         } else if ( direction === 'up' ) {
             if ( currentIndex > 0 ) {
@@ -123,10 +120,10 @@ class GridPage extends Component {
                 });
                 this.gridApi.selectIndex(currentIndex - 1);
             } else {
-                alert('rowIndex가 0보다 작을 수 없습니다.');
+                alert('rowIndex가 0 입니다.');
             }
         } else {
-            alert('방향설정이 잘못되었습니다.');
+            alert('derection parameter가 잘못되었습니다.');
         }
     }
 
@@ -146,21 +143,21 @@ class GridPage extends Component {
     
     render() {
         return (
-            <div 
+            <div
                 className="ag-theme-balham"
-                style={{ height: '500px', width: '600px' }} 
+                style={{ height: '500px', width: '600px' }}
             >
-                <button onClick={ this.onAddRow }>Add Row</button>
-                <button onClick={ this.onRemoveRow }>remove Row</button>
-                <button onClick={ () => this.move('down') }>move down</button>
-                <button onClick={ () => this.move('up') }>move up</button>
-                <AgGridReact
-                    columnDefs={ this.state.columnDefs }
-                    rowData={ this.state.rowData }
-                    onGridReady={ this.onGridReady }
-                    onRowSelected={ this.onRowSelected }
-                    onSelectionChanged={ this.onSelectionChanged }>
-                </AgGridReact>
+                    <button onClick={ this.onAddRow }>Add Row</button>
+                    <button onClick={ this.onRemoveRow }>remove Row</button>
+                    <button onClick={ () => this.move('down') }>move down</button>
+                    <button onClick={ () => this.move('up') }>move up</button>
+                    <AgGridReact
+                        columnDefs={ this.state.columnDefs }
+                        rowData={ this.state.rowData }
+                        onGridReady={ this.onGridReady }
+                        onRowSelected={ this.onRowSelected }
+                        onSelectionChanged={ this.onSelectionChanged }>
+                    </AgGridReact>
             </div>
         );
     }
